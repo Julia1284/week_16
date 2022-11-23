@@ -107,8 +107,8 @@ class _NotesPageState extends State<NotesPage> {
         context: context,
         barrierDismissible: false,
         pageBuilder: (_, __, ___) {
-          var newName;
-          var newDescription;
+          late String newName;
+          late String newDescription;
           return AlertDialog(
             title: const Text('Edit note'),
             content: Column(

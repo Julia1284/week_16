@@ -1,5 +1,4 @@
 import 'package:week_16/note.dart';
-import 'package:objectbox/objectbox.dart';
 import 'package:week_16/objectbox.g.dart';
 
 class NotesRepository {
@@ -16,24 +15,16 @@ class NotesRepository {
   }
 
   Future addNote(Note note) async {
-    print(note.id);
-    print(note.name);
     await _box.putAsync(note);
   }
 
   Future deleteNote(int id) async {
-    print(id);
     _box.remove(id);
   }
 
-  Future deleteNote1(Note note) async {
-    print(note.id);
-    _box.remove(note.id);
-  }
-
-  Future updateNote(Note note, newname, newdescription) async {
+  updateNote(Note note, newname, newdescription) {
     note.name = newname;
     note.description = newdescription;
-    await _box.put(note);
+    _box.put(note);
   }
 }
