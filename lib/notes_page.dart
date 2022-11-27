@@ -107,8 +107,8 @@ class _NotesPageState extends State<NotesPage> {
         context: context,
         barrierDismissible: false,
         pageBuilder: (_, __, ___) {
-          late String newName;
-          late String newDescription;
+          String newName = _notes[i].name;
+          String newDescription = _notes[i].description;
           return AlertDialog(
             title: const Text('Edit note'),
             content: Column(
@@ -116,7 +116,6 @@ class _NotesPageState extends State<NotesPage> {
               children: [
                 TextFormField(
                   initialValue: _notes[i].name,
-                  // controller: nameController,
                   decoration: const InputDecoration(hintText: 'Name'),
                   onChanged: (name) => setState(() {
                     newName = name;
@@ -134,9 +133,8 @@ class _NotesPageState extends State<NotesPage> {
             ),
             actions: [
               TextButton(
-                onPressed: () async {
-                  await _notesRepo.updateNote(
-                      _notes[i], newName, newDescription);
+                onPressed: () {
+                  _notesRepo.updateNote(_notes[i], newName, newDescription);
                   setState(() {
                     _notes = _notesRepo.notes;
                     Navigator.pop(context);

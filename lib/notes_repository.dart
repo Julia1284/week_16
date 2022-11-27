@@ -24,7 +24,9 @@ class NotesRepository {
 
   updateNote(Note note, newname, newdescription) {
     note.name = newname;
+
     note.description = newdescription;
+
     _box.put(note);
   }
 }
